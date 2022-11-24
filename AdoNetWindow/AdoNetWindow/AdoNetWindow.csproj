@@ -10,7 +10,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AdoNet\AdoNet.csproj" />
-    <ProjectReference Include="..\AdoNet_Database\AdoNet_Database.sqlproj" />
     <ProjectReference Include="..\AppConfiguration\AppConfiguration.csproj" />
   </ItemGroup>
 
