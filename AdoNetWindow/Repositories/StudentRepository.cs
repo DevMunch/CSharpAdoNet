@@ -20,14 +20,35 @@ namespace Repositories
             return model.StudentId;
         }
 
-        public int Delete(int student_model, IDbTransaction transaction = null)
+        public int Delete(int student_id, IDbTransaction transaction = null)
         {
-            throw new NotImplementedException();
+            StringBuilder qry = new StringBuilder();
+            qry.Append($" DELETE TB_Student WHERE StudentId = {student_id}");
+
+            SqlCommand command = new SqlCommand(qry.ToString(), (SqlConnection)dbInstance.Connection);
+            return command.ExecuteNonQuery();
         }
+
+        /*public DataSet GetAll(IDbTransaction transaction = null)
+        {
+            DataSet ds = new DataSet();
+            SqlDataAdapter da = new SqlDataAdapter();
+            StringBuilder qry = new StringBuilder();
+            qry.Append($" SELECT StudentID, StudentName, Address");
+            qry.Append($" FROM TB_Student ORDER BY StudentName");
+            da.SelectCommand = new SqlCommand(qry.ToString(), (SqlConnection)dbInstance.Connection);
+            da.Fill(ds);
+            return ds;
+        }*/
 
         public List<StudentModel> GetAll(IDbTransaction transaction = null)
         {
-            throw new NotImplementedException();
+            StringBuilder qry = new StringBuilder();
+            qry.Append($" SELECT StudentID, StudentName, Address");
+            qry.Append($" FROM TB_Student ORDER BY StudentName");
+            SqlCommand command = new SqlCommand(qry.ToString(), (SqlConnection)dbInstance.Connection);
+            SqlDataReader dr = command.ExecuteReader(CommandBehavior.CloseConnection);
+            return GetStudentModel(dr);
         }
 
         public StudentModel GetById(int student_model, IDbTransaction transaction = null)
@@ -40,14 +61,25 @@ namespace Repositories
             throw new NotImplementedException();
         }
 
-        private StudentModel GetStudentModel(SqlDataReader rd)
+        /// <summary>
+        /// 앞으로 강의중에 Micro ORM인 Dapper를 사용해서 아래 불필요한 함수를 생략 가능하도록 하는 것을 배운다.
+        /// </summary>
+        /// <param name="rd"></param>
+        /// <returns></returns>
+        private List<StudentModel> GetStudentModel(SqlDataReader rd)
         {
-            StudentModel model = new StudentModel();
-            //model.StudentId = int.Parse(rd.GetString(1).ToString());
-            model.StudentId = int.Parse(rd["StudentId"].ToString());
-            model.StudentName = rd["StudentName"].ToString();
-            model.Address = rd["Address"].ToString();
-            return model;
+            List<StudentModel> studentLists = new List<StudentModel>();
+            while (rd.Read())
+            {
+                StudentModel model = new StudentModel();
+                //model.StudentId = int.Parse(rd.GetString(1).ToString());
+                model.StudentId = int.Parse(rd["StudentId"].ToString());
+                model.StudentName = rd["StudentName"].ToString();
+                model.Address = rd["Address"].ToString();
+                studentLists.Add(model);
+            }
+            rd.Close();
+            return studentLists;
         }
     }
 }

@@ -34,7 +34,10 @@
             this.txtAddress = new System.Windows.Forms.TextBox();
             this.btnAdd = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.grdStudent = new System.Windows.Forms.DataGridView();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grdStudent)).BeginInit();
             this.SuspendLayout();
             // 
             // txtStudentName
@@ -82,6 +85,7 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.btnDelete);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.btnAdd);
             this.panel1.Controls.Add(this.txtStudentName);
@@ -90,20 +94,50 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(800, 233);
+            this.panel1.Size = new System.Drawing.Size(800, 49);
             this.panel1.TabIndex = 5;
+            // 
+            // grdStudent
+            // 
+            this.grdStudent.AllowUserToAddRows = false;
+            this.grdStudent.AllowUserToDeleteRows = false;
+            this.grdStudent.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.grdStudent.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grdStudent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grdStudent.Location = new System.Drawing.Point(0, 49);
+            this.grdStudent.MultiSelect = false;
+            this.grdStudent.Name = "grdStudent";
+            this.grdStudent.ReadOnly = true;
+            this.grdStudent.RowHeadersVisible = false;
+            this.grdStudent.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+            this.grdStudent.RowTemplate.Height = 25;
+            this.grdStudent.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.grdStudent.Size = new System.Drawing.Size(800, 401);
+            this.grdStudent.TabIndex = 6;
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Location = new System.Drawing.Point(656, 11);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(75, 23);
+            this.btnDelete.TabIndex = 5;
+            this.btnDelete.Text = "삭제";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.grdStudent);
             this.Controls.Add(this.panel1);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grdStudent)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -116,5 +150,7 @@
         private TextBox txtAddress;
         private Button btnAdd;
         private Panel panel1;
+        private DataGridView grdStudent;
+        private Button btnDelete;
     }
 }
