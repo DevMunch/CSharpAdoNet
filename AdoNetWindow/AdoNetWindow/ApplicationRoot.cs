@@ -17,7 +17,11 @@ namespace AdoNetWindow
         public ApplicationRoot()
         {
             InitializeComponent();
-            instance = ConfigurationMgr.Instance();
+            // 디자인 모드에서든 동작 x 런타임에서만 수행
+            if(System.ComponentModel.LicenseManager.UsageMode!=System.ComponentModel.LicenseUsageMode.Designtime)
+            {
+                instance = ConfigurationMgr.Instance();
+            }
         }
     }
 }

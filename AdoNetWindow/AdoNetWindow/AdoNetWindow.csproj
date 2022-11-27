@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\AdoNetWindow.Model\AdoNetWindow.Model.csproj" />
     <ProjectReference Include="..\AdoNet\AdoNet.csproj" />
     <ProjectReference Include="..\AppConfiguration\AppConfiguration.csproj" />
   </ItemGroup>

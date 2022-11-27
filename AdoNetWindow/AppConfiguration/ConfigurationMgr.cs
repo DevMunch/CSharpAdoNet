@@ -23,8 +23,11 @@ namespace AppConfiguration
         }
         private ConfigurationMgr()
         {
-            // DB접속을 위한 파일을 읽어온다.
-            LoadConfiguration();
+            if (System.ComponentModel.LicenseManager.UsageMode != System.ComponentModel.LicenseUsageMode.Designtime)
+            {
+                // DB접속을 위한 파일을 읽어온다.
+                LoadConfiguration();
+            }
         }
 
         private void LoadConfiguration()
