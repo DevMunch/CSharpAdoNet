@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\AdoNetWindow.Model\AdoNetWindow.Model.csproj" />
+    <ProjectReference Include="..\Libs\Libs.csproj" />
+  </ItemGroup>
+
 </Project>

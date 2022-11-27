@@ -12,6 +12,7 @@
     <ProjectReference Include="..\AdoNetWindow.Model\AdoNetWindow.Model.csproj" />
     <ProjectReference Include="..\AdoNet\AdoNet.csproj" />
     <ProjectReference Include="..\AppConfiguration\AppConfiguration.csproj" />
+    <ProjectReference Include="..\Repositories\Repositories.csproj" />
   </ItemGroup>
 
 </Project>
